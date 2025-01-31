@@ -150,35 +150,64 @@ String:
 
 Now the program runs correctly and outputs the expected results. Let me know if you need further modifications!
 
+Your code has a **syntax error** in the `printf` statement and a logical issue with assigning a negative value to an unsigned integer.  
 
+### **Key Fixes:**
+1. **Corrected `printf` Statement:**  
+   - `printf(" Value: In", unsignedVar);` is incorrect.  
+   - Fixed to `printf(" Value: %u\n", unsignedVar);`
+   
+2. **Understanding Unsigned Integer Behavior:**  
+   - `unsigned int invalidUnsigned = -1;`  
+   - Since `unsigned int` cannot hold negative values, `-1` is interpreted as the **maximum possible value** for `unsigned int` (typically **4,294,967,295** on a **32-bit system**).
+
+---
+
+### **Corrected Code:**
+```c
 #include <stdio.h>
 
 int main() {
+    // Declare signed and unsigned integers
+    signed int signedVar = -100;  // Signed integer can hold negative values
+    unsigned int unsignedVar = 100; // Unsigned integer can only hold non-negative values
 
-// Declare signed and unsigned integers
+    // Display the values of the signed and unsigned integers
+    printf("Signed Integer: \n");
+    printf(" Value: %d\n", signedVar);
 
-signed int signedVar = 100; // Signed integer can hold negative values
+    printf("Unsigned Integer: \n");
+    printf(" Value: %u\n", unsignedVar);
 
-unsigned int unsignedVar = 100; // Unsigned integer can only hold non-negative values
+    // Assigning a negative value to an unsigned integer
+    unsigned int invalidUnsigned = -1;
 
-// Display the values of the signed and unsigned integers
+    printf("Unsigned Integer with a negative assignment (-1):\n");
+    printf(" Value: %u\n", invalidUnsigned); // Typically prints 4,294,967,295 on a 32-bit system
 
-printf("Signed Integer: \n");
-
-printf(" Value: %d\n", signedVar);
-
-printf("Unsigned Integer: \n");
-
-printf(" Value: In", unsignedVar);
-
-// Assigning a negative value to an unsigned integer
-
-unsigned int invalidUnsigned = -1;
-
-printf("Unsigned Integer with a negative assignment (-1):\n");
-
-printf(" Value: %u\n", invalidUnsigned);
-
-return 0;
-
+    return 0;
 }
+```
+
+---
+
+### **Expected Output (on a 32-bit system):**
+```
+Signed Integer: 
+ Value:-100
+
+Unsigned Integer: 
+ Value: 100
+
+Unsigned Integer with a negative assignment (-1):
+ Value: 4294967295
+```
+
+### **Explanation:**
+- **`signedVar = 100;`** → Holds positive and negative values.
+- **`unsignedVar = 100;`** → Cannot hold negative values.
+- **`invalidUnsigned = -1;`**  
+  - Since `unsigned int` **cannot store negative values**, `-1` is stored as **the maximum possible unsigned integer**.
+  - On a **32-bit system**, this results in **4,294,967,295 (2³² - 1)**.
+
+Your corrected code now runs without errors and correctly demonstrates signed vs. unsigned integers. 🚀
