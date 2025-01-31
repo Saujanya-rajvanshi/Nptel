@@ -1,7 +1,7 @@
 # Nptel
 Program in NPTEL  c programming 
 
-Here is your **full and correct code**:  
+ **c variable**:  
 
 ```c
 #include <stdio.h>
@@ -67,11 +67,9 @@ This code **correctly demonstrates**:
 ✔ **Static variables** (retain values between function calls).  
 ✔ **Automatic variables** (reinitialize every function call).  
 
-Let me know if you need modifications! 🚀
-
 ---
 
-### **C:**
+### **C datatype:**
 ```c
 #include <stdio.h>
 
@@ -148,22 +146,9 @@ String:
 - **`sizeof(charVar)`** → **1 byte** (as expected).
 - **`sizeof(stringVar)`** → **Includes the null terminator (`\0`)**, making it **length + 1**.
 
-Now the program runs correctly and outputs the expected results. Let me know if you need further modifications!
-
-Your code has a **syntax error** in the `printf` statement and a logical issue with assigning a negative value to an unsigned integer.  
-
-### **Key Fixes:**
-1. **Corrected `printf` Statement:**  
-   - `printf(" Value: In", unsignedVar);` is incorrect.  
-   - Fixed to `printf(" Value: %u\n", unsignedVar);`
-   
-2. **Understanding Unsigned Integer Behavior:**  
-   - `unsigned int invalidUnsigned = -1;`  
-   - Since `unsigned int` cannot hold negative values, `-1` is interpreted as the **maximum possible value** for `unsigned int` (typically **4,294,967,295** on a **32-bit system**).
-
 ---
 
-### **Corrected Code:**
+### **C signed and unsigned variable:**
 ```c
 #include <stdio.h>
 
@@ -211,3 +196,77 @@ Unsigned Integer with a negative assignment (-1):
   - On a **32-bit system**, this results in **4,294,967,295 (2³² - 1)**.
 
 Your corrected code now runs without errors and correctly demonstrates signed vs. unsigned integers. 🚀
+
+Your code contains **syntax errors and incorrect assignment operations**. Below is a **corrected version** with explanations:
+
+---
+
+### **Key Fixes:**
+1. **Fixed `printf()` Formatting Errors:**
+   - `"Enter two integers (a and b): "` should be on a new line for clarity.
+   - Closing quotes (`"`) were missing at the end of some `printf()` statements.
+
+2. **Fixed `+=`, `-=`, and `*=` Operations:**
+   - **`+= b;`** was incorrect (it should be `c += b;`).
+   - **`c = b;`** was incorrectly placed (should use `c -= b;` and `c *= b;`).
+
+3. **Ensured Proper Code Execution Order:**
+   - **Each assignment modifies `c`, so it should be done sequentially.**
+
+---
+
+### **C operator:**
+```c
+#include <stdio.h>
+
+int main() {
+    int a, b, c;
+
+    // Input two integers from the user
+    printf("Enter two integers (a and b): ");
+    scanf("%d %d", &a, &b);
+
+    // Displaying assignment operations
+    printf("\nAssignment Operations Results:\n");
+
+    // Simple assignment
+    c = a;
+    printf("c = a: c = %d\n", c);
+
+    // Add the value of b to c and assign the result to c
+    c += b; // Equivalent to c = c + b
+    printf("c += b: c = %d\n", c);
+
+    // Subtract the value of b from c and assign the result to c
+    c -= b; // Equivalent to c = c - b
+    printf("c -= b: c = %d\n", c);
+
+    // Multiply c by b and assign the result to c
+    c *= b; // Equivalent to c = c * b
+    printf("c *= b: c = %d\n", c);
+
+    return 0;
+}
+```
+
+---
+
+### **Expected Output (Example Run):**
+```
+Enter two integers (a and b): 5 3
+
+Assignment Operations Results:
+c = a: c = 5
+c += b: c = 8
+c -= b: c = 5
+c *= b: c = 15
+```
+
+---
+
+### **Explanation of Assignment Operators:**
+1. **`c = a;`** → Assigns `a` to `c`.  
+2. **`c += b;`** → `c = c + b` (adds `b` to `c`).  
+3. **`c -= b;`** → `c = c - b` (subtracts `b` from `c`).  
+4. **`c *= b;`** → `c = c * b` (multiplies `c` by `b`).  
+
