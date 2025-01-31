@@ -1,6 +1,60 @@
 # Nptel
 Program in NPTEL  c programming 
 
+#include <stdio.h>
+
+// Global variable
+int globalVar = 100;
+
+// Function to demonstrate the use of static and automatic variables
+void demonstrateVariables() {
+    // Static variable (retains its value between function calls)
+    static int staticVar = 10;
+    
+    // Automatic variable (lifetime limited to function scope)
+    int autoVar = 5;
+
+    printf("Inside demonstrateVariables function:\n");
+    printf("Static Variable: %d\n", staticVar);
+    printf("Automatic Variable: %d\n", autoVar);
+
+    // Modify the variables
+    staticVar++;
+    autoVar++;
+}
+
+In main function:
+Global Variable: 100
+Local Variable: 20
+
+Calling demonstrateVariables for the first time:
+Inside demonstrateVariables function:
+Static Variable: 10
+Automatic Variable: 5
+
+Calling demonstrateVariables for the second time:
+Inside demonstrateVariables function:
+Static Variable: 11
+Automatic Variable: 5
+
+int main() {
+    // Local variable (defined inside main function)
+    int localVar = 20;
+
+    printf("In main function:\n");
+    printf("Global Variable: %d\n", globalVar);
+    printf("Local Variable: %d\n", localVar);
+
+    printf("\nCalling demonstrateVariables for the first time:\n");
+    demonstrateVariables();
+
+    printf("\nCalling demonstrateVariables for the second time:\n");
+    demonstrateVariables();
+
+    return 0;
+}
+
+
 Your code contains multiple syntax errors and formatting issues. Below is the **corrected version**:
 
 ### **Key Fixes:**
