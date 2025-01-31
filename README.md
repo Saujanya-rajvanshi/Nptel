@@ -22,21 +22,6 @@ void demonstrateVariables() {
     staticVar++;
     autoVar++;
 }
-
-In main function:
-Global Variable: 100
-Local Variable: 20
-
-Calling demonstrateVariables for the first time:
-Inside demonstrateVariables function:
-Static Variable: 10
-Automatic Variable: 5
-
-Calling demonstrateVariables for the second time:
-Inside demonstrateVariables function:
-Static Variable: 11
-Automatic Variable: 5
-
 int main() {
     // Local variable (defined inside main function)
     int localVar = 20;
@@ -53,7 +38,19 @@ int main() {
 
     return 0;
 }
+In main function:
+Global Variable: 100
+Local Variable: 20
 
+Calling demonstrateVariables for the first time:
+Inside demonstrateVariables function:
+Static Variable: 10
+Automatic Variable: 5
+
+Calling demonstrateVariables for the second time:
+Inside demonstrateVariables function:
+Static Variable: 11
+Automatic Variable: 5
 
 Your code contains multiple syntax errors and formatting issues. Below is the **corrected version**:
 
