@@ -270,3 +270,158 @@ c *= b: c = 15
 3. **`c -= b;`** → `c = c - b` (subtracts `b` from `c`).  
 4. **`c *= b;`** → `c = c * b` (multiplies `c` by `b`).  
 
+Your code is **almost correct**, but there's a small issue with the format specifier. `%s` is used for strings, but `"true"` and `"false"` are string literals. This works in modern compilers but is not strictly type-safe in standard C.  
+
+---
+
+### **Key Fixes:**
+1. **Using `"true"` and `"false"` safely**:
+   - Instead of `%s`, we can use **`printf()` directly** with `"true"` and `"false"`.  
+   - Alternatively, we can use **`const char*`** variables for better readability.
+
+---
+
+### **Corrected Code:**
+```c
+#include <stdio.h>
+
+int main() {
+    int a, b;
+
+    // Input two integers
+    printf("Enter two integers (a and b): ");
+    scanf("%d %d", &a, &b);
+
+    // Logical operations
+    printf("\nLogical Operations Results:\n");
+
+    // Using ternary operator to print true/false
+    printf("(a > 0) && (b > 0): %s\n", (a > 0 && b > 0) ? "true" : "false");
+    printf("(a > 0) || (b > 0): %s\n", (a > 0 || b > 0) ? "true" : "false");
+    printf("!(a > 0): %s\n", (!(a > 0)) ? "true" : "false");
+
+    return 0;
+}
+```
+
+---
+
+### **Alternative Using `const char*`:**
+```c
+#include <stdio.h>
+
+int main() {
+    int a, b;
+    
+    // Input two integers
+    printf("Enter two integers (a and b): ");
+    scanf("%d %d", &a, &b);
+
+    // Define true/false strings
+    const char *trueStr = "true";
+    const char *falseStr = "false";
+
+    // Logical operations
+    printf("\nLogical Operations Results:\n");
+    printf("(a > 0) && (b > 0): %s\n", (a > 0 && b > 0) ? trueStr : falseStr);
+    printf("(a > 0) || (b > 0): %s\n", (a > 0 || b > 0) ? trueStr : falseStr);
+    printf("!(a > 0): %s\n", (!(a > 0)) ? trueStr : falseStr);
+
+    return 0;
+}
+```
+
+---
+
+### **Expected Output (Example Runs):**
+#### **Case 1: a = 5, b = 3**
+```
+Enter two integers (a and b): 5 3
+
+Logical Operations Results:
+(a > 0) && (b > 0): true
+(a > 0) || (b > 0): true
+!(a > 0): false
+```
+
+#### **Case 2: a = -2, b = 0**
+```
+Enter two integers (a and b): -2 0
+
+Logical Operations Results:
+(a > 0) && (b > 0): false
+(a > 0) || (b > 0): false
+!(a > 0): true
+```
+
+---
+
+### **Explanation:**
+1. **Logical AND (`&&`)** → `true` only if **both** conditions are `true`.
+2. **Logical OR (`||`)** → `true` if **at least one** condition is `true`.
+3. **Logical NOT (`!`)** → **Reverses** the condition.
+
+Your code contains **syntax errors**, mainly in arithmetic operations and missing operators. Below is the **corrected and complete version**:
+
+---
+
+### **Key Fixes:**
+1. **Fixed Arithmetic Operators:**
+   - `difference = num1 num2;` → should be `difference = num1 - num2;`
+   - `product num1 num2;` → should be `product = num1 * num2;`
+   - `remainder = num1% num2;` → should be `remainder = num1 % num2;`
+
+2. **Ensured Proper `printf()` Formatting:**
+   - `printf("%d %d = %d\n", num1, num2, difference);` → Fixed to include `-`
+   - `printf("%d %d = %d\n", num1, num2, product);` → Fixed to include `*`
+   - `printf("%d / %d = %.2f\n", num1, num2, quotient);` → Ensured floating-point output.
+   - `printf("%d %% %d = %d\n", num1, num2, remainder);` → Used `%%` to print `%`.
+
+---
+
+### **Corrected Code:**
+```c
+#include <stdio.h>
+
+int main() {
+    int num1, num2;
+    int sum, difference, product, remainder;
+    float quotient;
+
+    // Input two integers
+    printf("Enter two integers: ");
+    scanf("%d %d", &num1, &num2);
+
+    // Perform arithmetic operations
+    sum = num1 + num2;
+    difference = num1 - num2;
+    product = num1 * num2;
+    quotient = (float) num1 / num2; // Typecasting for accurate division
+    remainder = num1 % num2;
+
+    // Output results
+    printf("\nResults:\n");
+    printf("%d + %d = %d\n", num1, num2, sum);
+    printf("%d - %d = %d\n", num1, num2, difference);
+    printf("%d * %d = %d\n", num1, num2, product);
+    printf("%d / %d = %.2f\n", num1, num2, quotient);
+    printf("%d %% %d = %d\n", num1, num2, remainder);
+
+    return 0;
+}
+```
+
+---
+
+### **Expected Output (Example Run):**
+```
+Enter two integers: 10 3
+
+Results:
+10 + 3 = 13
+10 - 3 = 7
+10 * 3 = 30
+10 / 3 = 3.33
+10 % 3 = 1
+```
+
