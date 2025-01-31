@@ -149,3 +149,36 @@ String:
 - **`sizeof(stringVar)`** → **Includes the null terminator (`\0`)**, making it **length + 1**.
 
 Now the program runs correctly and outputs the expected results. Let me know if you need further modifications!
+
+
+#include <stdio.h>
+
+int main() {
+
+// Declare signed and unsigned integers
+
+signed int signedVar = 100; // Signed integer can hold negative values
+
+unsigned int unsignedVar = 100; // Unsigned integer can only hold non-negative values
+
+// Display the values of the signed and unsigned integers
+
+printf("Signed Integer: \n");
+
+printf(" Value: %d\n", signedVar);
+
+printf("Unsigned Integer: \n");
+
+printf(" Value: In", unsignedVar);
+
+// Assigning a negative value to an unsigned integer
+
+unsigned int invalidUnsigned = -1;
+
+printf("Unsigned Integer with a negative assignment (-1):\n");
+
+printf(" Value: %u\n", invalidUnsigned);
+
+return 0;
+
+}
