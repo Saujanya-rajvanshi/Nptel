@@ -410,7 +410,7 @@ int main() {
     return 0;
 }
 ```
-
+**function in c**:  
 ---
 
 ### **Expected Output (Example Run):**
