@@ -425,3 +425,45 @@ Results:
 10 % 3 = 1
 ```
 
+### **array:**
+```
+include<stdio.h>
+
+#include<conio.h>
+
+main()
+
+{
+
+int a[4]://declaration of single dimensional array of size 4
+
+int i,j;
+
+clrscr();
+
+printf ("Enter the value in array");
+
+for(i=0;i<4;i++)
+
+{
+
+scanf (d",&a[i]);
+
+}
+
+// it is helping us inserting the value in array a
+
+printf ("Outout for(j=0; j<4; j++)
+
+{
+
+printf("%d",a[j]);
+
+}
+
+// it is helping us reteriving the value in array a
+
+getch();
+
+}
+```
